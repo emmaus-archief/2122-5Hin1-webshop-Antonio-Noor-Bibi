@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="toast" data-delay="2000">
+      <div class="toast-header">
+        <strong class="mr-auto">Product toegevoegd</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        Ga naar je <a href="/basket.html">Winkelwagen</a> om af te rekenen
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">Shop</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Artikelen <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <a href="basket.html"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Winkelwagen <span class="num_products"></span></button></a>
+      </div>
+    </nav>
+    <main id="index">
+    </main>
+    <footer>
+      <hr>
+       <p>Het maken van deze website is een opdracht voor het vak informatica op het Emmauscollege Rotterdam.</p>
+   </footer>
+    <!-- template for product info-->
+        <template id="productcard">
+
+      <div class="col-sm">
+        <div style="display: flex; justify-content: space-beteen;">
+          <h5 syle="display: inline-block"><a href="/index.html">Artikelen</a>&nbsp;&gt;&nbsp;</h5><h5 class="product_title"></h5>
+        </div>
+        <div class="card product">
+          <h5 class="card-header product_title"></h5>
+          <img width="200" class="product_image">
+          <div class="card-body">
+            <p class="product_description card-text"></p>
+            <ul class="product-properties">
+            <li><span class="propert-name">Prijs:</span><span class="product_price"></span></li>
+            <li><span class="propert-name">Code:</span><span class="product_code"></span></li>
+            </ul>
+            <input class="product_amount" type="number" value="1" min="1">
+            <input class="product_id" type="hidden" name="id" data-json="">
+            <button class="btn btn-outline-dark shop-button" onclick="event.stopPropagation();addAmountClosestToBasket(this);$('.toast').toast('show')">🛒</button>
+          </div>
+        </div>
+      </div>
+    </template> 
+    <script src="/js/basket.js"></script>
+    <script>
+      (function() {
+        const template = document.querySelector('#productcard');
+        const app = document.getElementById('index')
+        
+        updateBasket()
+
+        const container = document.createElement('div')
+        container.setAttribute('class', 'container row article-container')
+
+        app.appendChild(container)
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('productId');
+
+        var request = new XMLHttpRequest()
+        request.open('GET', `/api/products/${productId}`, true)
+        request.onload = function () {
+            var product = JSON.parse(this.response)
+            if (request.status >= 200 && request.status < 400) {
+                const clone = template.content.cloneNode(true);
+                clone.querySelector(".product_title").textContent += product.name
+                clone.querySelector(".product_description").textContent = product.description
+                clone.querySelector(".product_price").textContent = `€ ${product.price.toFixed(2)}`
+                clone.querySelector(".product_code").textContent = product.code
+                clone.querySelector(".product_id").value = product.id
+                clone.querySelector(".product_id").dataset.json = JSON.stringify(product)
+                clone.querySelector(".product_image").src =`/images/${product.id}.jpg`
+
+                container.appendChild(clone)
+            } else {
+              const errorMessage = document.createElement('marquee')
+              errorMessage.textContent = `Gah, it's not working!`
+              app.appendChild(errorMessage)
+            }
+          }
+        request.send()
+
+      })();
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

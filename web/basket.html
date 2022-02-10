@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="/">Shop</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Artikelen</a>
+          </li>
+        </ul>
+        <a href="basket.html"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Winkelwagen <span class="num_products"></span></button></a>
+      </div>
+    </nav>
+
+    <main>
+        <!-- inhoud winkelwagen -->
+        <div class="container" id="index">
+          <h4>Winkelwagen</h4>
+          <p>Hier zie je de lijst met artikelen uit je winkelwagen.</p>
+          <p>Door op plus en min te drukken kun je het aantal per artikel aanpassen</p>   
+          <!-- melding die wordt getoond als je winkelwagen leeg is -->
+          <div id="show_when_empty_basket">
+          <div class="alert alert-info" > 
+            Je winkelwagen is leeg. 
+          </div>
+          </div>
+          <!-- template for product info-->
+          <template id="productrow">
+          <div class="card product product_row">
+            <div class="card-header">
+              <ximg class="product_image" width="30">
+              <span class="product_name"></span>
+            </div>
+            <div class="card-body">
+              <ul class="product-properties">
+                <li><span class="propert-name">Id:</span><span class="product_id_show"></span></li>
+                <li><span class="propert-name">Prijs:</span><span class="product_price"></span></li>
+                <li><span class="propert-name">Aantal:</span><span class="product_amount_show"></span></li>
+              </ul>
+              <!-- input field needed as parameter for + and - -->
+              <input class="product_amount" name="deltaAmount" value="1" type="hidden">
+              <!-- input field needed for checkout -->
+              <input class="product_id" name="productIds" data-json="" type="hidden">
+              <!-- input field needed for checkout -->
+              <input class="product_totalAmount" name="productAmounts" value="9" type="hidden">
+              <button class="btn btn-outline-dark shop-button" onClick="addAmountClosestToBasket(this, '.product_amount_show')">+</button>
+              <button class="btn btn-outline-dark shop-button" onClick="removeAmountClosestFromBasket(this, '.product_amount_show')">-</button>
+              <button class="btn btn-outline-dark shop-button" onClick="if(confirm('Verwijder product?')) { removeClosestCompletelyFromBasket(this); setIfEmptyMsg() }">🗑</button>
+            </div>
+          </div>
+          </template>
+        </div>
+
+         <!-- totaal bedrag winkelwagen en knop voor Winkelwagen legen en knop voor Verder winkelen-->
+        <div class="container" id="totaal">
+            <p>Totaal bedrag: € <span class="sum_products">0.00</span></p>
+            <p>
+              <button class="btn btn-outline-dark shop-button" onClick="if(confirm('Winkelwagen legen?')) { emptyBasket(); location.href='basket.html' }">Winkelwagen legen</button> <!-- beetje lomp om hele pagina opnieuw te laden na legen -->
+              <button class="btn btn-outline-dark shop-button" onClick="location.href='index.html'">Verder winkelen</button>
+            </p>
+        </div>
+
+        <!-- bestelformulier -->
+        <form class="container" id="orderForm">
+          <h4>Vul hieronder je adresgegevens in</h4>
+          <div class="form-group">
+            <label for="naam">Naam</label>
+              <input required
+                     class="form-control"
+                     name="name" 
+                     placeholder="Voornaam en Achternaam" 
+                     oninvalid="this.setCustomValidity('Naam is verplicht')" 
+                     onchange="this.setCustomValidity('')">
+          </div>
+          <div class="form-group">
+            <label for="adres">Adres</label>
+            <input required 
+                   class="form-control"
+                   name="adres" 
+                   placeholder="Straat en huisnummer"
+                   oninvalid="this.setCustomValidity('Adres is verplicht')" 
+                   onchange="this.setCustomValidity('')">
+          </div>
+          <div class="form-group">
+            <label for="postcode">Postcode</label>
+            <input required 
+                   class="form-control"
+                   name="postcode" 
+                   placeholder="1234 AB"
+                   oninvalid="this.setCustomValidity('Postcode is verplicht')" 
+                   onchange="this.setCustomValidity('')">
+          </div>
+          <div class="form-group">
+            <label for="plaats">Woonplaats</label>
+            <input required 
+                   class="form-control"
+                   name="plaats" 
+                   placeholder="Rotterdam"
+                   oninvalid="this.setCustomValidity('Woonplaats is verplicht')" 
+                   onchange="this.setCustomValidity('')">
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input required
+                   class="form-control"
+                   type="email" 
+                   name="email" 
+                   placeholder="user@example.com"
+                   oninvalid="this.setCustomValidity('Geen geldig email adres opgegeven')" 
+                   onchange="this.setCustomValidity('')">
+          </div>
+          <div>
+            <label for="phone">Mobiel</label>
+            <input required 
+                   class="form-control"
+                   type="tel" 
+                   name="phone" 
+                   placeholder="06123456789" 
+                   pattern="^\(?([+]31|0031|0)-?6(\s?|-)([0-9]\s{0,3}){8}$"
+                   oninvalid="this.setCustomValidity('Geen geldig mobiel nummer opgegeven')" 
+                   onchange="this.setCustomValidity('')">
+          </div>
+          <p>...en klik op bestellen<p>
+          <p>Als ik je bestelling gezien heb, dan ontvang je van mij een Tikkie. Zodra je betaald hebt, stuur ik de spullen op.</p>
+          <button type="button" class="btn btn-outline-success shop-button" onclick="checkout()">Bestellen</button>
+        </form>
+        
+        <!-- bevestiging van bestelling -->
+        <div class="container" id="checkout_status">
+             <template id="checkout_success">
+               <div class="alert alert-success"> 
+                 Je bestelling is geplaatst en een bevestigingsmail is verzonden.<br>
+                 Je ordernummer is <span class="checkout_ordernumber"></span> 
+               </div>
+             </template>
+             <template id="checkout_failes">
+               <div class="alert alert-danger">
+                 Je bestelling kon niet worden geplaatst, neem contact op met de shop<br>
+                 Foutmelding:<br>
+                 <span class="checkout_error_message"></span>
+               </div>
+             </template>
+        </div>
+
+    </main>
+    <footer>
+      <hr>
+      <p>Deze website is gemaakt door <naam leerling> voor het vak informatica op het Emmauscollege Rotterdam. Laatste bijgewerkt 1 oktober 2020.</p>
+    </footer>
+
+    <script src="/js/basket.js"></script>
+    <script> // script to show basket when page is loaded
+
+        // toon bericht dat winkelwagen leeg is als winkelwagen leeg is
+        function setIfEmptyMsg() {
+          const basket = readBasket()
+          var numkeys = Object.keys(basket).length
+          if(numkeys == 0) {
+            document.querySelector('#show_when_empty_basket').style.display = "block"
+          }else{
+            document.querySelector('#show_when_empty_basket').style.display = "none"
+          }
+        }
+
+      // deze functie wordt aangeroepen als de webpagina is geladen en
+      // toont de inhoud van de winkelwagen 
+      (function() {
+        // your page initialization code here
+        // the DOM will be available here
+        updateBasket()
+        const template = document.querySelector('#productrow');
+        const index = document.getElementById('index')
+        
+        const basket = readBasket()
+
+        // voeg alle producten uit de winkelwagen toe aan webpagina
+        for (id in basket) { // herhaal voor alle producten in de winkelmand
+          const amount = basket[id]
+          const product = JSON.parse(localStorage.getItem(`item_${id}`))
+          const clone = template.content.cloneNode(true)
+          clone.querySelector(".product_name").textContent = product.name
+          clone.querySelector(".product_price").textContent = `€ ${product.price.toFixed(2)}`
+          clone.querySelector(".product_image").src =`images/${product.id}.jpg`
+          clone.querySelector(".product_amount_show").textContent = amount             
+          clone.querySelector(".product_id_show").textContent = product.id             
+          clone.querySelector(".product_id").value = product.id 
+          clone.querySelector(".product_id").dataset.json = JSON.stringify(product)
+          //clone.querySelector(".product_amount").value = amount            
+          index.appendChild(clone)
+        }
+
+        // vul totaalprijs in in webpagina
+        const total = document.querySelector('.sum_products');
+        total.textContent = basketTotalPrice().toFixed(2)
+        
+        // voeg toe aan webpagina dat winkelmand leeg is als winkelmand leeg is
+        setIfEmptyMsg()
+
+      })();
+    </script>
+    
+    <script> // script to order when submit-button is pressed
+    var formElement = document.querySelector('#orderForm')
+
+    // translate all data in the form into a string that can be sent to the API 
+    function urlencodeAllData(){  
+      var params = new URLSearchParams();
+      // add input fields from form to params 
+      const formData = new FormData(formElement)
+      for(var pair of formData.entries()){
+          typeof pair[1]=='string' && params.append(pair[0], pair[1]);
+      }
+      // add product_id and and product_amount to params
+      const basket = readBasket()
+      for (id in basket) { // herhaal voor alle producten in de winkelmand
+          const amount = basket[id]
+          const product = JSON.parse(localStorage.getItem(`item_${id}`))
+          //productIds.push(id)
+          //productAmounts.push(amount)
+          params.append('productIds', id)
+          params.append('productAmounts', amount)
+        }
+      //params.append('productIds', productIds)
+      //params.append('productAmounts', productAmounts)
+      console.log(params.toString())
+      return params.toString();
+    }
+
+    // this function is executed when checkout data had been sent
+    // shows on the webpage whether checkout was succesfull or not
+    function showCheckoutStatus() {
+        if (this.readyState == 4 && this.status == 200) {
+          emptyBasket()
+          // toon banner dat bestelling is verzonden
+          const data = JSON.parse(this.responseText)
+          const parent = document.getElementById('checkout_status')
+          const template = document.querySelector('#checkout_success')
+          var clone = template.content.cloneNode(true)
+          var checkout_ordernumber = clone.querySelector('.checkout_ordernumber')
+          checkout_ordernumber.textContent = data.orderId
+          parent.appendChild(clone)
+        } else if (this.readyState == 4) {
+          // toon banner met foutmelding dat bestelling niet is verzonden
+          const parent = document.getElementById('checkout_status')
+          const template = document.querySelector('#checkout_failed')
+          var clone = template.content.cloneNode(true)
+          var checkout_error_message = clone.querySelector('.checkout_error_message')
+          checkout_error_message.textContent = this.responseText
+          parent.appendChild(clone)  
+        } else {
+            // not ready yet
+        }
+      }
+ 
+    // this function is executed when submit-button on the form is pressed
+    function checkout() {
+      // continue only if form contains valid values
+      if(!formElement.reportValidity()){
+        return
+      }
+      // sent checkout information to API
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/api/checkout');
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhr.onreadystatechange = showCheckoutStatus
+      xhr.send(urlencodeAllData())
+    }
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+	  </script>
+	  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	          integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+	  </script>
+	  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+	        	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+	  </script>
+  </body>
+</html>

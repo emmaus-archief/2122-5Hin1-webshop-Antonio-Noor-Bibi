@@ -1,0 +1,76 @@
+/* all pages */
+
+footer {
+  margin: 20px;
+  font-size: 12px;
+} 
+
+.toast {
+    /* dirty: below 'card' button  */
+    position: fixed; 
+    top: 50px; 
+    right: 0; 
+    z-index:0;
+}
+
+.shop-button {
+  font-size: 15px;
+  margin-top: -4px;
+}
+
+.article-container {
+  margin: auto;
+}
+
+.card {
+  width:200px; 
+  height: 700px; 
+  margin-bottom: 20px
+}
+
+.card-header {
+  height: 5em;
+}
+
+.card-text {
+  min-height:10em
+}
+
+/* index page */
+.product{
+  width: 100%; 
+  height: inherit; 
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.product img {
+  margin: auto;
+  margin-top: 20px;
+}
+
+.product > .card-header {
+  height:3em
+}
+
+.product-properties > li > .property-name {
+  display: inline-block;
+  width: 50px;
+}
+.product_amount {
+  width: 80px
+}
+
+/* basket page */
+.product-properties {
+  margin-top:20px;
+  list-style: none; 
+  padding-left: 5px; 
+  font-size: 15px"
+}
+
+.product_row  .product-properties  li {
+  width: 25%;
+  float: left;
+}
+
