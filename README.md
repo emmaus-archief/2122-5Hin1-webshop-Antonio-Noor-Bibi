@@ -9,9 +9,9 @@ of in Gitpod (gitpod is zonder mailen van orders en zonder permanent hosten):
 ### In mijn webshop vind je: 
 - make-up
 ### Deze webshop is gemaakt door: 
-- * Noor* 
--  *Bibi*
--  * Antonio* 
+- *Noor*
+- *Bibi*
+- *Antonio* 
      
 
 # Mijn aanpak
