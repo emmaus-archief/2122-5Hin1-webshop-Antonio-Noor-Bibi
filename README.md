@@ -19,12 +19,12 @@ Werk de planning af van boven naar beneden<br>
 Geef aan met [x] welke onderdelen af zijn
 
 Stap 1: Start 
-- [ ] Pas de achtergrondkleur van de shop aan (zie mapje web)
-- [ ] Pas de titel van het eerste product in de shop aan (zie mapje db)
-- [ ] Pas de query aan zodat getoonde producten gesorteerd worden op naam (zie mapje api)
+- [x] Pas de achtergrondkleur van de shop aan (zie mapje web)
+- [x] Pas de titel van het eerste product in de shop aan (zie mapje db)
+- [x] Pas de query aan zodat getoonde producten gesorteerd worden op naam (zie mapje api)
 
 Stap 2: Database opzetten 
-- [ ] Maak tabellen en velden (CREATE TABLE commando) in je database waarin alle informatie kan worden opgeslagen die je over je producten wilt tonen.<br>
+- [x] Maak tabellen en velden (CREATE TABLE commando) in je database waarin alle informatie kan worden opgeslagen die je over je producten wilt tonen.<br>
 Tip: je kunt een multipliciteitendiagram gebruiken als tussenstap voor je database-ontwerp
 - [ ] Vul de tabellen met informatie (INSERT commando)
 - [ ] Voeg eventueel plaatjes toe (web/images map)

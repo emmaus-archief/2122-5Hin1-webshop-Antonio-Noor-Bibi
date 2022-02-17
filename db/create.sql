@@ -10,6 +10,14 @@ CREATE TABLE products (
   price NUMERIC(10, 2)
 );
 
+CREATE TABLE info (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  naam TEXT,
+  merk TEXT,
+  kleur TEXT,
+  prijs NUMERIC(10, 2)
+);
+
 
 --
 -- populate with data
