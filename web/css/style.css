@@ -1,5 +1,5 @@
 /* all pages */
-body {
+body, main {
 	background-color: #fef2f7;
 }
 
@@ -7,6 +7,38 @@ footer {
   margin: 20px;
   font-size: 12px;
 } 
+
+.titel {
+  text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	font-size: 45px;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.nav1 {
+  display: inline;
+  margin: 50px;
+	text-decoration: none;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-weight: bold;
+	font-size: 25px;
+	color: black;
+	text-transform: uppercase;
+}
+
+.nav-link1 {
+	color: black;
+	text-align: center;
+}
+
+.nav-link1:hover {
+  text-decoration: none;
+	color: #494949;
+}
+
 
 .toast {
     /* dirty: below 'card' button  */

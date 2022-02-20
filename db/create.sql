@@ -35,6 +35,6 @@ insert into products (name, code, color, brand, price) values ('huda beauty', '0
 insert into products (name, code, color, brand, price) values ('too faced', '0000005', 'brown', 'too faced', 14);
 insert into products (name, code, color, brand, price) values ('anasatasia beverly hills', '0000006', 'blue', 'anastasia', 15);
 insert into products (name, code, color, brand, price) values ('kkw', '0000007', 'yellow', 'kim', 16);
-
+insert into products (name, code, color, brand, price) values ('idk', '0000008', 'idc', 'boeie', 18);
 
 
