@@ -26,7 +26,7 @@ Stap 1: Start
 Stap 2: Database opzetten 
 - [x] Maak tabellen en velden (CREATE TABLE commando) in je database waarin alle informatie kan worden opgeslagen die je over je producten wilt tonen.<br>
 Tip: je kunt een multipliciteitendiagram gebruiken als tussenstap voor je database-ontwerp
-- [ ] Vul de tabellen met informatie (INSERT commando)
+- [x] Vul de tabellen met informatie (INSERT commando)
 - [ ] Voeg eventueel plaatjes toe (web/images map)
 
 Stap 3: API aanpassen 
