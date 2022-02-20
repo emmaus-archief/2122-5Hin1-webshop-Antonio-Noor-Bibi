@@ -32,8 +32,8 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="index.html">Teams Faves <span class="sr-only">)</span></a></li>
-				<li class="nav-item active"><a class="nav-link" href="kylie.html">kylie cosmetics<span class="sr-only">(current)</span></a></li>
+				<li class="nav-item active"><a class="nav-link" href="index.html">Teams Faves <span class="sr-only">(current)</span></a></li>
+				<li class="nav-item active"><a class="nav-link" href="kylie.html">kylie <span class="sr-only">(current)</span></a></li>
 			</ul>
 			<a
 				href="basket.html"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Winkelwagen <span class="num_products"></span></button></a>
@@ -41,21 +41,16 @@
 	</nav>
 
   <!-- lijst met producten, wordt gevuld door javascript -->
-		<main id="index">
+	<main id="index">
 		<div class="container">
-			<h5 class="titel">kylie cosmetics</h5>
-       <nav class="nav">
+			<h5 class = "titel">Teams faves</h5>
+			<nav class="nav">
 				<ul class= "nav-prod">
-					<li class = "nav1"><a class= "nav-link1" href= "kylie-gezicht.html">Gezicht</a></li>
-					<li class = "nav1"><a class= "nav-link1" href= "kylie-lippen.html">Lippen</a></li>
-					<li class = "nav1"><a class= "nav-link1" href= "kylie-wenkbrauwen.html">Wenkbrauwen</a></li>
-					<li class = "nav1"><a class= "nav-link1" href= "kylie-extras.html">Extra's</a></li>
+					<li class = "nav1"><a class= "nav-link1" href= "team-antonio.html">Antonio</a></li>
+					<li class = "nav1"><a class= "nav-link1" href= "team-bibi.html">Bibi</a></li>
+					<li class = "nav1"><a class= "nav-link1" href= "team-noor.html">Noor</a></li>
 				</ul>	
        </nav>	
-
-
-
-			<p></p>
 		</div>	
     <!-- template for product info-->
   	<template id="productcard">
@@ -127,7 +122,7 @@
               }
               // voeg product toe aan DOM, 
               // zodat deze zichtbaar wordt op de webpagina
-               const clone = template.content.cloneNode(true);
+              const clone = template.content.cloneNode(true);
               clone.querySelector(".product_title").textContent = name
               clone.querySelector(".product_brand").textContent =`${product.brand.substr}`
               clone.querySelector(".product_price").textContent = `€ ${product.price.toFixed(2)}`
