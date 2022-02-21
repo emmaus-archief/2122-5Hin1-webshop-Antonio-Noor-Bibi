@@ -4,7 +4,7 @@
 
 CREATE TABLE products (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  code VARCHAR(15),
+  code VARCHAR(7),
   name VARCHAR(255),
   price NUMERIC(10, 2),
 	color TEXT,
