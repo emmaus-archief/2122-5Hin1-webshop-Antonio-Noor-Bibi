@@ -8,6 +8,10 @@ footer {
   font-size: 12px;
 } 
 
+.nav-link {
+	text-transform: capitalize;
+} 
+
 .titel {
   text-align: center;
 	margin-top: 30px;
