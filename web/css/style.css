@@ -10,6 +10,8 @@ footer {
 
 .nav-link {
 	text-transform: capitalize;
+	margin-right: 20px;
+	text-align: center;
 } 
 
 .titel {
@@ -23,8 +25,9 @@ footer {
 }
 
 .nav1 {
-  display: inline;
+  display: inline-block;
   margin-right: 50px;
+	text-align: center;
 	text-decoration: none;
 	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 	font-weight: bold;
@@ -35,14 +38,12 @@ footer {
 
 .nav-link1 {
 	color: black;
-	text-align: center;
 }
 
 .nav-link1:hover {
   text-decoration: none;
 	color: #494949;
 }
-
 
 .toast {
     /* dirty: below 'card' button  */
