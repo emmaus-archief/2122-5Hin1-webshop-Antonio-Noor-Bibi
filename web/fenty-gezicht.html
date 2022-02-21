@@ -33,8 +33,8 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active"><a class="nav-link" href="index.html">Team Faves <span class="sr-only">)</span></a></li>
-				<li class="nav-item active"><a class="nav-link" href="kylie.html">kylie cosmetics<span class="sr-only">(current)</span></a></li>
-				<li class="nav-item active"><a class="nav-link" href="fenty.html">Fenty Beauty<span class="sr-only"></span></a></li>
+				<li class="nav-item active"><a class="nav-link" href="kylie.html">kylie cosmetics<span class="sr-only"></span></a></li>
+				<li class="nav-item active"><a class="nav-link" href="fenty.html">Fenty Beauty<span class="sr-only">(current)</span></a></li>
 				<li class="nav-item active"><a class="nav-link" href="toofaced.html">too faced<span class="sr-only"></span></a></li>
 				<li class="nav-item active"><a class="nav-link" href="anastasia.html">anastasia beverly hills<span class="sr-only"></span></a></li>
 				<li class="nav-item active"><a class="nav-link" href="huda.html">huda beauty<span class="sr-only"></span></a></li>
@@ -45,16 +45,22 @@
 	</nav>
 
   <!-- lijst met producten, wordt gevuld door javascript -->
-	<main id="index">
+		<main id="index">
 		<div class="container">
-			<h5 class = "titel">Teams faves</h5>
-			<nav class="nav">
+			<h5 class="titel">Fenty beauty</h5>
+        <nav class="nav">
 				<ul class= "nav-prod">
-					<li class = "nav1"><a class= "nav-link1" href= "team-antonio.html">Antonio</a></li>
-					<li class = "nav1"><a class= "nav-link1" href= "team-bibi.html">Bibi</a></li>
-					<li class = "nav1"><a class= "nav-link1" href= "team-noor.html">Noor</a></li>
+					<li class = "nav1"><a class= "nav-link1" href= "fenty-gezicht.html">Gezicht</a></li>
+					<li class = "nav1"><a class= "nav-link1" href= "fenty-lippen.html">Lippen</a></li>
+					<li class = "nav1"><a class= "nav-link1" href= "fenty-ogen.html">Ogen</a></li>
+					<li class = "nav1"><a class= "nav-link1" href= "fenty-wangen.html">Wangen</a></li>
+					<li class = "nav1"><a class= "nav-link1" href= "fenty-extras.html">Extra's</a></li>
 				</ul>	
        </nav>	
+
+
+
+			<p></p>
 		</div>	
     <!-- template for product info-->
   	<template id="productcard">
@@ -126,7 +132,7 @@
               }
               // voeg product toe aan DOM, 
               // zodat deze zichtbaar wordt op de webpagina
-              const clone = template.content.cloneNode(true);
+               const clone = template.content.cloneNode(true);
               clone.querySelector(".product_title").textContent = name
               clone.querySelector(".product_brand").textContent =`${product.brand.substr}`
               clone.querySelector(".product_price").textContent = `€ ${product.price.toFixed(2)}`
