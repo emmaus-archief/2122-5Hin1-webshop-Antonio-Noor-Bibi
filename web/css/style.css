@@ -45,6 +45,13 @@ footer {
 	color: #494949;
 }
 
+.team {
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-weight: bold;
+	font-size: 30px;
+
+}
+
 .toast {
     /* dirty: below 'card' button  */
     position: fixed; 
