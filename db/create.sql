@@ -7,16 +7,12 @@ CREATE TABLE products (
   code VARCHAR(7),
   name VARCHAR(255),
   price NUMERIC(10, 2),
-	color TEXT,
-	brand TEXT
 );
 
 CREATE TABLE info (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  naam TEXT,
   merk TEXT,
-  kleur TEXT,
-  prijs NUMERIC(10, 2)
+  kleur TEXT
 );
 
 --
