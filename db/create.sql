@@ -5,17 +5,28 @@
 CREATE TABLE products (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   code VARCHAR(7),
-  name VARCHAR(255),
+  brand VARCHAR(255),
+  color VARCHAR(255),
+  description TEXT,
   price NUMERIC(10, 2),
-);
+  );
 
-CREATE TABLE info (
+  CREATE TABLE brand (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  merk TEXT,
-  kleur TEXT
-);
+  name VARCHAR(255)
+  );
 
+  CREATE TABLE color (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name VARCHAR(255)
+  );
+
+  CREATE TABLE categorie (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name VARCHAR(255)
+  );
 --
+  
 -- populate with data
 --
 -- generared using
