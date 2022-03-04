@@ -14,17 +14,17 @@ CREATE TABLE products (
   price NUMERIC(10, 2)
   );
 
-  CREATE TABLE brand (
+CREATE TABLE brand (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name VARCHAR(255)
   );
 
-  CREATE TABLE voorraad (
+CREATE TABLE voorraad (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name VARCHAR(255)
   );
 
-  CREATE TABLE categorie (
+CREATE TABLE categorie (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name VARCHAR(255)
   );
@@ -39,8 +39,6 @@ CREATE TABLE products (
 --
 
 insert into products (name, description, color, code, price, brand_id, voorraad_id, categorie_id) values ('Lip-kit', '-', 'pink', '0000001', 29.99, 1, 1, 2);
-
-	
 
 insert into brand (name) values ('Kylie Cosmetics');
 insert into brand (name) values ('Fenty Beauty');
