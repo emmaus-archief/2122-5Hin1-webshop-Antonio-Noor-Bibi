@@ -75,12 +75,12 @@ insert into products (name, description, color, code, price, brand_id, voorraad_
 
 	
 	-- kylie/lippen --
-insert into products (name, description, color, code, price, brand_id, voorraad_id, categorie_id) values ('Lip-kit', 'COMFORTABLE ON LIPS. 8-HOUR WEAR.', 'Candy K', '1930001', 29.99, 1, 1, 1);
-insert into products (name, description, color, code, price, brand_id, voorraad_id, categorie_id) values ('Liquid Lipstick', '8-HOUR LONGWEAR. TRUE-MATTE FINISH', 'Dirty Peach', '1930002', 19.99, 1, 2, 1);
-insert into products (name, description, color, code, price, brand_id, voorraad_id, categorie_id) values ('Lip Gloss', 'ULTRA SHINE & COMFORT', 'KOKO K', '1930003', 16.99, 1, 2, 1);
-insert into products (name, description, color, code, price, brand_id, voorraad_id, categorie_id) values ('Lip Liners', 'ULTRA-CREAMY, LONG-WEARING COLOR', 'Coconut', '1930004', 12.99, 1, 3, 1);
-insert into products (name, description, color, code, price, brand_id, voorraad_id, categorie_id) values ('Lip Blush', 'FLUSHING, VELVETY MATTE COLOR', 'Bikini Bold', '1930005', 19.99, 1, 3, 1);
-insert into products (name, description, color, code, price, brand_id, voorraad_id, categorie_id) values ('Lip Shine Lacquer', 'HIGHLY PIGMENTED + LIGHTWEIGHT', 'It`s The Gloss For Me', '1930006', 18, 1, 2, 1);
+insert into products (name, description, color, code, price, brand_id, voorraad_id, categorie_id) values ('Lip-kit', 'COMFORTABLE ON LIPS. 8-HOUR WEAR.', 'Candy K', '1930001', 29.99, 1, 1, 2);
+insert into products (name, description, color, code, price, brand_id, voorraad_id, categorie_id) values ('Liquid Lipstick', '8-HOUR LONGWEAR. TRUE-MATTE FINISH', 'Dirty Peach', '1930002', 19.99, 1, 2, 2);
+insert into products (name, description, color, code, price, brand_id, voorraad_id, categorie_id) values ('Lip Gloss', 'ULTRA SHINE & COMFORT', 'KOKO K', '1930003', 16.99, 1, 2, 2);
+insert into products (name, description, color, code, price, brand_id, voorraad_id, categorie_id) values ('Lip Liners', 'ULTRA-CREAMY, LONG-WEARING COLOR', 'Coconut', '1930004', 12.99, 1, 3, 2);
+insert into products (name, description, color, code, price, brand_id, voorraad_id, categorie_id) values ('Lip Blush', 'FLUSHING, VELVETY MATTE COLOR', 'Bikini Bold', '1930005', 19.99, 1, 3, 2);
+insert into products (name, description, color, code, price, brand_id, voorraad_id, categorie_id) values ('Lip Shine Lacquer', 'HIGHLY PIGMENTED + LIGHTWEIGHT', 'It`s The Gloss For Me', '1930006', 18, 1, 2, 2);
 
 
 	-- kylie/wenkbrauwen --

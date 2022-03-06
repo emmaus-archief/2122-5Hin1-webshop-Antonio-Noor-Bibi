@@ -103,7 +103,7 @@
         // laad producten
         // de functie showProducts wordt aangeroepen als er antwoord van de API is
         var request = new XMLHttpRequest()
-        request.open('GET', '/api/products', true) 
+        request.open('GET', '/api/brands/1/4', true) 
         request.onload = showProducts 
         request.send() 
 
@@ -122,10 +122,10 @@
       app.appendChild(container)
         
             var data = JSON.parse(this.response) // vertaal response van API naar array met producten
-            //for (let row in data)
+            for (let row in data)
 	{ // herhaal voor elke product
-              // const product = data[row]
-				      const product = data[[],[], [], [], [], 1, [], 6]
+               const product = data[row]
+				      
               var name = product.name.substr(0, 35)
               if(name.length < product.name.length) {
                 name = name + '...'

@@ -29,7 +29,8 @@ app.get('/api/echo', echoRequest)
 app.get('/api/categories', getCategories)
 app.get('/api/products', getProducts)
 app.get('/api/products/:id', getProductById)
-//app.get('/api/products/:id/related', db.getRelatedProductsById)
+//app.get('/api/products/:id/related', getRelatedProductsById)
+app.get('/api/brands/:id/:categorie', getBrandedCategory)
 // our API is not protected...so let's not expose these
 // app.post('/api/products', createProduct)
 // app.put('/api/products/:id', updateProduct)
@@ -83,12 +84,12 @@ function getProductById(request, response) {
   response.status(200).json(data[0])
 }
 
-/*
+
 const getRelatedProductsById = (request, response) => {
   const id = parseInt(request.params.id)
   // TODO: change query to return related products
   // it now return an array with the current products
-  pool.query('SELECT * FROM products WHERE id = $1', [id], (error, results) => {
+  pool.query('SELECT * FROM products WHERE id = $1' , [id], (error, results) => {
     if (error) {
       console.log(error)
       response.status(500).json("oops")
@@ -96,6 +97,23 @@ const getRelatedProductsById = (request, response) => {
       response.status(200).json(results.rows)
     }
   })
+}
+function getBrandedCategory(request, response) {
+    const id = request.params.id
+    const categorie = request.params.categorie
+  // TODO: change query to return related products
+  // it now return an array with the current products
+  let data;
+  const sqlOpdracht = db.prepare('SELECT * FROM products WHERE brand_id = ? and categorie_id = ? ');
+  try {
+      data = sqlOpdracht.all([id, categorie]);
+    console.log(data);
+  
+      response.status(200).json(data)
+  } catch (error) {
+      console.log(error)
+      response.status(500).json("oops")
+  } 
 }
 
 const createProduct = (request, response) => {
