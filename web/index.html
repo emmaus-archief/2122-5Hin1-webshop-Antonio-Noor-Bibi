@@ -47,10 +47,8 @@
   <!-- lijst met producten, wordt gevuld door javascript -->
 	<main id="index">
 		<div class="container">
-			<h5 class = "titel">Team faves</h5>
-		  <p class="team">Antonio</p>
-			<p class="team">Bibi</p>
-			<p class="team">Noor</p>
+			<h5 class = "titel">Geheel Assortiment</h5>
+	
 
 		</div>	
     <!-- template for product info-->
@@ -82,7 +80,7 @@
 
 	<script src="/js/basket.js"></script> <!-- functies voor de winkelwagen -->
 
-<!--
+
 
   <script> // functies om de producten te laden en tonen op de webpagina
     
@@ -126,14 +124,13 @@
               // voeg product toe aan DOM, 
               // zodat deze zichtbaar wordt op de webpagina
               const clone = template.content.cloneNode(true);
+              clone.querySelector(".product_image").src =`/images/${product.id}.jpg`
               clone.querySelector(".product_title").textContent = name
-              clone.querySelector(".product_brand").textContent =`${product.brand.substr}`
               clone.querySelector(".product_price").textContent = `€ ${product.price.toFixed(2)}`
               clone.querySelector(".product_code").textContent = product.code
               clone.querySelector(".product_id").value = product.id
               clone.querySelector(".product_id").dataset.json = JSON.stringify(product)
-              clone.querySelector(".product_image").src =`/images/${product.id}.jpg`
-              container.appendChild(clone)
+              container.appendChild(clone) 
             }
           }
 	</script>
@@ -148,7 +145,7 @@
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
 	</script>
 
--->
+
 
 </body>
 

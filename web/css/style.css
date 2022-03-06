@@ -45,11 +45,6 @@ footer {
 	color: #494949;
 }
 
-.team {
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-	font-weight: bold;
-	font-size: 30px;
-}
 
 .navbar-brand {
 	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -60,7 +55,7 @@ footer {
 .toast {
     /* dirty: below 'card' button  */
     position: fixed; 
-    top: 50px; 
+    top: 0px; 
     right: 0; 
     z-index:0;
 }
@@ -75,8 +70,8 @@ footer {
 }
 
 .card {
-  width: 200px; 
-  height: 700px; 
+  width: 250px; 
+  height: 600px; 
   margin-bottom: 20px
 }
 
@@ -85,7 +80,8 @@ footer {
 }
 
 .card-text {
-  min-height:10em
+  min-height: 10em;
+	margin-top: -5px;
 }
 
 /* index page */
@@ -108,9 +104,11 @@ footer {
 .product-properties > li > .property-name {
   display: inline-block;
   width: 50px;
+
 }
+
 .product_amount {
-  width: 80px
+  width: 80px;
 }
 
 /* basket page */
