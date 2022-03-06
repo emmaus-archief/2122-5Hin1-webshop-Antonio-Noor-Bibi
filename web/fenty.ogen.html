@@ -63,14 +63,19 @@
 			<p></p>
 		</div>	
     <!-- template for product info-->
+	</div>	
+    <!-- template for product info-->
   	<template id="productcard">
 		<div class="col-sm">
 			<div class="card" onclick="openArticlePage(this)">
-				<h5 class="card-header product_title"></h5>
 				<img width="200" class="product_image card-img-top">
+				<h5 class="card-header product_title"></h5>
 				<div class="card-body">
 					<p class="product_brand card-text"></p>
+					<ul><span class="propert-name"></span><span class="product_description"></span></ul>
 					<ul class="product-properties">
+						<li><span class="propert-name">Kleur:</span><span class="product_color"></span></li>
+						<li><span class="propert-name">Voorraad:</span><span class="product_voorraad_id"></span></li>
 						<li><span class="propert-name">Prijs:</span><span class="product_price"></span></li>
 						<li><span class="propert-name">Code:</span><span class="product_code"></span></li>
 					</ul>
@@ -91,7 +96,7 @@
 
 	<script src="/js/basket.js"></script> <!-- functies voor de winkelwagen -->
 	
-  <script> // functies om de producten te laden en tonen op de webpagina
+   <script> // functies om de producten te laden en tonen op de webpagina
     
     // deze functie wordt aangeroepen als de pagina geladen is
     // deze functie laadt de producten via de API
@@ -105,7 +110,7 @@
         // laad producten
         // de functie showProducts wordt aangeroepen als er antwoord van de API is
         var request = new XMLHttpRequest()
-        request.open('GET', '/api/products', true) 
+        request.open('GET', '/api/brands/1/4', true) 
         request.onload = showProducts 
         request.send() 
 
@@ -124,25 +129,28 @@
       app.appendChild(container)
         
             var data = JSON.parse(this.response) // vertaal response van API naar array met producten
-            for (let row in data) { // herhaal voor elke product
+            for (let row in data)
+	{ // herhaal voor elke product
               const product = data[row]
               var name = product.name.substr(0, 35)
               if(name.length < product.name.length) {
                 name = name + '...'
-              }
+							}
               // voeg product toe aan DOM, 
               // zodat deze zichtbaar wordt op de webpagina
                const clone = template.content.cloneNode(true);
               clone.querySelector(".product_title").textContent = name
-              clone.querySelector(".product_brand").textContent =`${product.brand.substr}`
+              clone.querySelector(".product_description").textContent =`${product.description.substr(0, 100)}`
               clone.querySelector(".product_price").textContent = `€ ${product.price.toFixed(2)}`
               clone.querySelector(".product_code").textContent = product.code
+		          clone.querySelector(".product_color").textContent = `${product.color}`
+	            clone.querySelector(".product_voorraad_id").textContent = `${product.voorraad}`
               clone.querySelector(".product_id").value = product.id
               clone.querySelector(".product_id").dataset.json = JSON.stringify(product)
               clone.querySelector(".product_image").src =`/images/${product.id}.jpg`
-              container.appendChild(clone)
-            }
-          }
+              container.appendChild(clone)    
+						}
+		}
 	</script>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
