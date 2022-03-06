@@ -5,12 +5,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
   </head>
-
-
-
-	
   <body>
-
     <div class="toast" data-delay="2000">
       <div class="toast-header">
         <strong class="mr-auto">Product toegevoegd</strong>
@@ -22,25 +17,21 @@
         Ga naar je <a href="/basket.html">Winkelwagen</a> om af te rekenen
       </div>
     </div>
-
-
-   	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#">Libino</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">Shop</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="index.html">Home<span class="sr-only">)</span></a></li>
-				<li class="nav-item active"><a class="nav-link" href="kylie-gezicht.html">kylie cosmetics<span class="sr-only">(current)</span></a></li>
-				<li class="nav-item active"><a class="nav-link" href="fenty-gezicht.html">Fenty Beauty<span class="sr-only"></span></a></li>
-				<li class="nav-item active"><a class="nav-link" href="huda-gezicht.html">huda beauty<span class="sr-only"></span></a></li>
-			</ul>
-			<a
-				href="basket.html"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Winkelwagen <span class="num_products"></span></button></a>
-		</div>
-	</nav>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Artikelen <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <a href="basket.html"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Winkelwagen <span class="num_products"></span></button></a>
+      </div>
+    </nav>
     <main id="index">
     </main>
     <footer>
@@ -52,18 +43,16 @@
 
       <div class="col-sm">
         <div style="display: flex; justify-content: space-beteen;">
-          <h5 syle="display: inline-block"><a href="/index.html">Artikelen</a>&nbsp;&gt;&nbsp;</h5><h5 class="product_title"></h5>
+          <h5 syle="display: inline-block"><a href="/index.html">Home</a>&nbsp;&gt;&nbsp;</h5><h5 class="product_title"></h5>
         </div>
         <div class="card product">
           <h5 class="card-header product_title"></h5>
           <img width="200" class="product_image">
           <div class="card-body">
             <p class="product_description card-text"></p>
-					<ul class="product-properties">
-						<li><span class="propert-name">Kleur:</span><span class="product_color"></span></li>
-						<li><span class="propert-name">Voorraad:</span><span class="product_voorraad_id"></span></li>
-						<li><span class="propert-name">Prijs:</span><span class="product_price"></span></li>
-						<li><span class="propert-name">Code:</span><span class="product_code"></span></li>
+            <ul class="product-properties">
+            <li><span class="propert-name">Prijs:</span><span class="product_price"></span></li>
+            <li><span class="propert-name">Code:</span><span class="product_code"></span></li>
             </ul>
             <input class="product_amount" type="number" value="1" min="1">
             <input class="product_id" type="hidden" name="id" data-json="">
@@ -89,20 +78,19 @@
         const productId = urlParams.get('productId');
 
         var request = new XMLHttpRequest()
-        request.open('GET', '/api/products', true) 
+        request.open('GET', `/api/products/${productId}`, true)
         request.onload = function () {
             var product = JSON.parse(this.response)
             if (request.status >= 200 && request.status < 400) {
                 const clone = template.content.cloneNode(true);
                 clone.querySelector(".product_title").textContent += product.name
                 clone.querySelector(".product_description").textContent = product.description
-							  clone.querySelector(".product_color").textContent = `${product.color}`
-	              clone.querySelector(".product_voorraad_id").textContent = `${product.voorraad}`
                 clone.querySelector(".product_price").textContent = `€ ${product.price.toFixed(2)}`
                 clone.querySelector(".product_code").textContent = product.code
                 clone.querySelector(".product_id").value = product.id
                 clone.querySelector(".product_id").dataset.json = JSON.stringify(product)
                 clone.querySelector(".product_image").src =`/images/${product.id}.jpg`
+
                 container.appendChild(clone)
             } else {
               const errorMessage = document.createElement('marquee')
