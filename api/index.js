@@ -78,7 +78,7 @@ function getProductById(request, response) {
   console.log('API ontvangt /api/products/:id', request.query)
   let data = []
   const product_id = parseInt(request.params.id)
-  const sqlOpdracht = db.prepare('SELECT products.id AS id, products.name AS name, products.description AS description, products.code AS code, products.price AS price, brand_id AS brand, voorraad_id AS voorraad, categorie_id AS categorie FROM products WHERE id = ?')
+  const sqlOpdracht = db.prepare('SELECT products.id AS id,   	products.name AS name, products.description AS 				  			description, 	products.code AS code, products.price AS 				price, brand_id AS 	brand, voorraad_id AS voorraad, 			  	categorie_id AS categorie 		FROM products WHERE id = ?')
   data = sqlOpdracht.all(product_id)
   response.status(200).json(data[0])
 }
@@ -142,7 +142,7 @@ const deleteProduct = (request, response) => {
     }
   })
 }
-*/
+
 
 
 // ---------------------------------

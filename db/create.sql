@@ -46,7 +46,6 @@ insert into categorie (name) values ('wenkbrauwen');
 insert into categorie (name) values ('wangen');
 insert into categorie (name) values ('extras');
 
-
 SELECT * FROM products
 JOIN brand ON 
 brand.name = brand.id;
@@ -70,8 +69,8 @@ categorie.name = categorie.id;
 
   -- kylie/gezicht --
 insert into products (name, description, color, code, price, brand_id, voorraad_id, categorie_id) values ('Blush', 'INSTANT FLUSH ON CHEEKS', 'CLOSE TO PERFECT PRESSED', '1930001', 21.99, 1, 1, 1);
-insert into products (name, description, color, code, price, brand_id, voorraad_id, categorie_id) values ('Bronzers', 'WARM IT UP', 'KHAKI PRESSED', '1930001', 21.99, 3, 1, 1);
-insert into products (name, description, color, code, price, brand_id, voorraad_id, categorie_id) values ('Kylighter Illuminating Powder', 'ALL-OVER INSTANT GLOW', 'CLOSE TO PERFECT PRESSED', '1930001', 28.99, 1, 1, 1);
+insert into products (name, description, color, code, price, brand_id, voorraad_id, categorie_id) values ('Bronzers', 'WARM IT UP', 'KHAKI PRESSED', '1930001', 21.99, 1, 2, 1);
+insert into products (name, description, color, code, price, brand_id, voorraad_id, categorie_id) values ('Kylighter Illuminating Powder', 'ALL-OVER INSTANT GLOW', 'CLOSE TO PERFECT PRESSED', '1930001', 28.99, 1, 3, 1);
 insert into products (name, description, color, code, price, brand_id, voorraad_id, categorie_id) values ('Setting Powder', 'MATTIFY + LOCK IN', 'BEIGE', '1930001', 28.99, 1, 1, 1);
 
 	

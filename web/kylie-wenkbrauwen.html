@@ -123,25 +123,26 @@
       app.appendChild(container)
         
             var data = JSON.parse(this.response) // vertaal response van API naar array met producten
-            for (let row in data) { // herhaal voor elke product
-              const product = data[row]
+            //for (let row in data)
+	{ // herhaal voor elke product
+              // const product = data[row]
+				      const product = data[[],[], [], [], [], 1, [], 4]
               var name = product.name.substr(0, 35)
               if(name.length < product.name.length) {
                 name = name + '...'
-              }
+							}
               // voeg product toe aan DOM, 
               // zodat deze zichtbaar wordt op de webpagina
                const clone = template.content.cloneNode(true);
+							clone.querySelector(".product_image").src =`/images/${product.id}.jpg`
               clone.querySelector(".product_title").textContent = name
-              clone.querySelector(".product_brand").textContent =`${product.brand.substr}`
               clone.querySelector(".product_price").textContent = `€ ${product.price.toFixed(2)}`
               clone.querySelector(".product_code").textContent = product.code
               clone.querySelector(".product_id").value = product.id
               clone.querySelector(".product_id").dataset.json = JSON.stringify(product)
-              clone.querySelector(".product_image").src =`/images/${product.id}.jpg`
-              container.appendChild(clone)
-            }
-          }
+              container.appendChild(clone)       
+						}
+		}
 	</script>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
