@@ -70,8 +70,8 @@ footer {
 }
 
 .card {
-  width: 250px; 
-  height: 600px; 
+  width: 200px; 
+  height: 700px; 
   margin-bottom: 20px
 }
 
@@ -81,7 +81,7 @@ footer {
 
 .card-text {
   min-height: 10em;
-	margin-top: -5px;
+	
 }
 
 /* index page */
