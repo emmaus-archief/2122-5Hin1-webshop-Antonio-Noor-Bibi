@@ -66,12 +66,9 @@
 				<h5 class="card-header product_title"></h5>
 				<div class="card-body">
 					<p class="product_brand card-text"></p>
-					<ul><span class="propert-name"></span><span class="product_description"></span></ul>
-					<ul class="product-properties">
+					<ul><span class="propert-name"></span><span 
 						<li><span class="propert-name">Kleur:</span><span class="product_color"></span></li>
-						<li><span class="propert-name">Voorraad:</span><span class="product_voorraad_id"></span></li>
 						<li><span class="propert-name">Prijs:</span><span class="product_price"></span></li>
-						<li><span class="propert-name">Code:</span><span class="product_code"></span></li>
 					</ul>
 					<input class="product_amount" type="number" value="1" min="1">
 					<input class="product_id" type="hidden" name="id" data-json="">
@@ -134,11 +131,8 @@
               // zodat deze zichtbaar wordt op de webpagina
                const clone = template.content.cloneNode(true);
               clone.querySelector(".product_title").textContent = name
-              clone.querySelector(".product_description").textContent =`${product.description.substr(0, 100)}`
               clone.querySelector(".product_price").textContent = `€ ${product.price.toFixed(2)}`
-              clone.querySelector(".product_code").textContent = product.code
 		          clone.querySelector(".product_color").textContent = `${product.color}`
-	            clone.querySelector(".product_voorraad_id").textContent = `${product.voorraad}`
               clone.querySelector(".product_id").value = product.id
               clone.querySelector(".product_id").dataset.json = JSON.stringify(product)
               clone.querySelector(".product_image").src =`/images/${product.id}.jpg`
