@@ -32,7 +32,7 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="index.html">Home<span class="sr-only">)</span></a></li>
+				<li class="nav-item active"><a class="nav-link" href="index.html">Home <span class="sr-only">)</span></a></li>
 				<li class="nav-item active"><a class="nav-link" href="kylie-gezicht.html">kylie cosmetics<span class="sr-only">(current)</span></a></li>
 				<li class="nav-item active"><a class="nav-link" href="fenty-gezicht.html">Fenty Beauty<span class="sr-only"></span></a></li>
 				<li class="nav-item active"><a class="nav-link" href="huda-gezicht.html">huda beauty<span class="sr-only"></span></a></li>
@@ -46,7 +46,7 @@
 		<main id="index">
 		<div class="container">
 			<h5 class="titel">Huda Beauty</h5>
-        <nav class="nav">
+       <nav class="nav">
 				<ul class= "nav-prod">
 					<li class = "nav1"><a class= "nav-link1" href= "huda-gezicht.html">Gezicht</a></li>
 					<li class = "nav1"><a class= "nav-link1" href= "huda-lippen.html">Lippen</a></li>
@@ -66,7 +66,7 @@
 				<h5 class="card-header product_title"></h5>
 				<div class="card-body">
 					<p class="product_brand card-text"></p>
-					<ul><span class="propert-name"></span><span
+					<ul><span class="propert-name"></span><span 
 						<li><span class="propert-name">Kleur:</span><span class="product_color"></span></li>
 						<li><span class="propert-name">Prijs:</span><span class="product_price"></span></li>
 					</ul>
@@ -87,7 +87,7 @@
 
 	<script src="/js/basket.js"></script> <!-- functies voor de winkelwagen -->
 	
-  <script> // functies om de producten te laden en tonen op de webpagina
+   <script> // functies om de producten te laden en tonen op de webpagina
     
     // deze functie wordt aangeroepen als de pagina geladen is
     // deze functie laadt de producten via de API
@@ -101,7 +101,7 @@
         // laad producten
         // de functie showProducts wordt aangeroepen als er antwoord van de API is
         var request = new XMLHttpRequest()
-        request.open('GET', '/api/brands/3/2', true) 
+        request.open('GET', '/api/brands/3/6', true) 
         request.onload = showProducts 
         request.send() 
 
@@ -130,7 +130,7 @@
               // voeg product toe aan DOM, 
               // zodat deze zichtbaar wordt op de webpagina
                const clone = template.content.cloneNode(true);
-              clone.querySelector(".product_title").textContent = name=
+              clone.querySelector(".product_title").textContent = name
               clone.querySelector(".product_price").textContent = `€ ${product.price.toFixed(2)}`
 		          clone.querySelector(".product_color").textContent = `${product.color}`
               clone.querySelector(".product_id").value = product.id
